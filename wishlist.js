@@ -1,0 +1,1 @@
+let w=JSON.parse(localStorage.wish||'[]');document.getElementById('wish').innerHTML='<h2>Your Wishlist</h2>'+w.map(x=>`<div class=item>${x}</div>`).join('');

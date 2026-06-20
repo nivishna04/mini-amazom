@@ -1,0 +1,1 @@
+let c=JSON.parse(localStorage.cart||'[]');document.getElementById('cart').innerHTML='<h2>Your Cart</h2>'+c.map((x,i)=>`<div class=item>${x} <button onclick="r(${i})">Remove</button></div>`).join('');function r(i){c.splice(i,1);localStorage.cart=JSON.stringify(c);location.reload();}

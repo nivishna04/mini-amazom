@@ -1,0 +1,6 @@
+const products=[{n:'Gaming Laptop',p:'₹50000',d:'RTX Gaming Laptop'},{n:'Smartphone',p:'₹25000',d:'5G Smartphone'},{n:'Headphones',p:'₹2000',d:'Noise Cancelling'},{n:'Monitor',p:'₹12000',d:'Full HD Monitor'},{n:'Keyboard',p:'₹1500',d:'RGB Keyboard'},{n:'Smart Watch',p:'₹3000',d:'Fitness Watch'}];
+const box=document.getElementById('products');function render(arr=products){box.innerHTML=arr.map(x=>`<div class='card'><h3>${x.n}</h3><p>${x.p}</p><button class='btn' onclick='view("${x.n}")'>View</button> <button class='btn' onclick='cart("${x.n}")'>Cart</button> <button class='btn' onclick='wish("${x.n}")'>♥</button></div>`).join('')}
+function cart(n){let c=JSON.parse(localStorage.cart||'[]');c.push(n);localStorage.cart=JSON.stringify(c);}
+function wish(n){let w=JSON.parse(localStorage.wish||'[]');w.push(n);localStorage.wish=JSON.stringify(w);}
+function view(n){let p=products.find(x=>x.n===n);modal.style.display='block';details.innerHTML=`<h2>${p.n}</h2><p>${p.p}</p><p>${p.d}</p>`}
+search.oninput=e=>render(products.filter(x=>x.n.toLowerCase().includes(e.target.value.toLowerCase())));close.onclick=()=>modal.style.display='none';render();
